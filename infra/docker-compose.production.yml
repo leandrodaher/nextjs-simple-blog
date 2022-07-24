@@ -1,18 +1,13 @@
 version: '3'
 
 services:
-  nextjs-docker-dev:
+  nextjs-docker:
     build:
       context: ../
-      dockerfile: infra/Dockerfile.development
-    container_name: nextjs-docker-dev
-    restart: always
-    volumes:
-      - ../:/app
-      - ../node_modules:/app/node_modules
-      - /app/.next
+      dockerfile: infra/Dockerfile.production
+    image: nextjs-docker
     ports:
-      - 3000:3000
+      - '3001:3000'
   postgres_dev:
     container_name: 'postgres-dev'
     image: 'postgres:14.1-alpine'
